@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Saint Malo - Calendrier</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="../stylesheets/calendar.css">
+</style>
+</head>
+<body>
+ <h2>Saint-Malo - Calendrier</h2>
+
+ <div id="prices">
+   <ul class="h4">
+    <li>12€ Travailleur</li>
+    <li>5€ Chomeur</li>
+    <li>5€ Etudiant</li>
+    <li>5€ Enfant</li>
+    <li><a href="saint-malo.pdf">MODE D’EMPLOI</a></li> 
+  </ul>
+ </div>
+
+ <div id="main">
+
+ <div class="hcalendar">
+   <a class="btn btn-success" href="booking">Réserver</a>
+   <a class="btn btn-default" href="calendar"><span class="glyphicon glyphicon-chevron-left"></span></a>
+   <a class="btn btn-default" href="calendar"><span class="glyphicon glyphicon-chevron-right"></span></a>
+   <div class="month">Octobre 2015</div>
+ </div>
+ <table>
+  <col class="weekday" span="7">
+  <thead>
+    <tr>
+      <th>Lundi</th>
+      <th>Mardi</th>
+      <th>Mercredi</th>
+      <th>Jeudi</th>
+      <th>Vendredi</th>
+      <th>Samedi</th>
+      <th>Dimanche</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><div class="day">1</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">2</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">3</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">4</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">5</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td class="occupied">
+	  <div class="day">6</div>
+	  <div class="booking b1"><a href="#popup">Tristan</a></div>
+	  <div class="booking b2">Joris Quénée</div>
+          <div class="booking b3">Mayelle Quénée</div>
+	  <div class="booking b4">Isabelle Quénée</div>
+          <div class="total">11 personnes</div>
+      </td>
+      <td class="occupied"><div class="day">7</div>
+      <div class="booking b1">Tristan</div>
+      <div class="booking b2">Joris Quénée</div>
+      <div class="total">5 personnes</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="occupied"><div class="day">8</div>
+      <div class="booking b1">Tristan</div>
+      <div class="total">3 personnes</div>
+      </td>
+      <td class="occupied"><div class="day">9</div>
+      <div class="booking b1">Tristan</div>
+      <div class="total">3 personnes</div>
+      </td>
+      <td><div class="day">10</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">11</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">12</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">13</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">14</div><div class="free"><a href="booking">Libre</a></div></td>
+    </tr>
+    <tr>
+      <td><div class="day">15</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">16</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">17</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">18</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">19</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">20</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">21</div><div class="free"><a href="booking">Libre</a></div></td>
+    </tr>
+    <tr>
+      <td><div class="day">22</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">23</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">24</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">25</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">26</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">27</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">28</div><div class="free"><a href="booking">Libre</a></div></td>
+    </tr>
+    <tr>
+      <td><div class="day">29</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">30</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td><div class="day">31</div><div class="free"><a href="booking">Libre</a></div></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="popup" class="overlay">
+ <div class="popup">
+	<h2>Réservation - Tristan</h2>
+	<a class="close" href="#">×</a>
+
+	<div class="content">
+	<h3><a href="tel:0607080405">0607080405</a></h3> 
+  	<ul>
+          <li>Tarif Plien: 2</li>
+          <li>Tarif Réduit: 1</li>
+    	  <li>Nuits: 3</li>
+          <li>Prix: 40€</li>
+        </ul>
+        <h4>06/10/2015 au 09/10/2015</h4>
+	<h4>Contact: Joris - <a href="tel:0600606009">0600606009</a></h4>
+        </div>
+	<div class="action">
+	 	<a class="btn btn-danger" href="calendar">Supprimer</a>
+                <a class="btn pull-right btn-success" href="booking">Modifier</a>
+	</div>
+ </div>
+</div>
+
+</body>
+</html>

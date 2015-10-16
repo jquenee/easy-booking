@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<title>Saint Malo - Réservation</title>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="../stylesheets/bootstrap-datepicker3.min.css">
+  <link rel="stylesheet" href="../stylesheets/jquery.bootstrap-touchspin.min.css">
+  <link rel="stylesheet" href="../stylesheets/booking.css">
+  <script src="../javascripts/jquery-1.11.3.min.js"></script>
+  <script src="../javascripts/bootstrap-datepicker.min.js"></script>
+  <script src="../javascripts/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>
+  <script src="../javascripts/jquery.bootstrap-touchspin.min.js"></script>
+</head>
+<body>
+ <h2>Saint-Malo - Réservation</h2>
+ <div id="main">
+ <form role="form">
+  <a type="back" class="btn btn-default" href="calendar" ><span class="glyphicon glyphicon-arrow-left"></span></a>
+  <button type="submit" class="btn btn-danger">Enregistrer</button>
+  <p/>
+  <div class="form-group">
+    <label for="name">Nom</label>
+    <input type="text" class="form-control" id="name" maxlength="25" placeholder="Entrer un nom">
+  </div>
+  <div class="form-group phone">
+    <label for="phone">Téléphone</label>
+    <input type="text" id="phone" maxlength="10" class="form-control" placeholder="0601020304">
+  </div>
+  <label for="sdate">Début</label>
+  <div class="input-group date">
+    <input type="text" class="form-control form-date" id="sdate" placeholder="dd/mm/yyyy"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+  </div>
+  <label for="edate">Fin</label>
+  <div class="input-group date">
+    <input type="text" class="form-control form-date" id="edate" placeholder="dd/mm/yyyy"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+  </div>
+  <br>
+  <div class="form-group form-number">
+    <label for="adult">Tarif Plein</label>
+   <input type="number" id="adult" min="0" value="0" max="20">
+   </div>
+  <div class="form-group form-number">
+    <label for="child">Tarif Réduit</label>
+    <input type="number" id="child" min="0" value="0" max="20">
+  </div>
+
+  <div class="selectbox">
+    <label for="contact">Contact</label>
+    <select>
+  	<option value="joris">Joris</option>
+  	<option value="mayelle">Mayelle</option>
+  	<option value="isabelle">Isabelle</option>
+  	<option value="lauriane">Lauriane</option>
+    </select>
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox" checked="true">Envoie d'email</label>
+  </div>
+  <a type="back" class="btn btn-default" href="calendar"><span class="glyphicon glyphicon-arrow-left"></span></a>
+  <button type="submit" class="btn btn-danger">Enregistrer</button>
+</form>
+
+<script>
+    $('.input-group.date').datepicker({
+        format: "dd/mm/yyyy",
+        language: "fr",
+        todayHighlight: true
+    });
+
+    $("input[type='number']").TouchSpin({
+            initval: 40,
+	    min: 0,
+            max: 20,
+    });
+</script>
+ </div>
+</body>
