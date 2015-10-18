@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'pages/home'
-  get 'pages/contact'
-  get 'pages/about'
 
-  resources :microposts
-  resources :users
+  # session_path - POST
+  resources :sessions, :only => [:create]
+  root 'sessions#new'
+ 
+  match '*unmatched_route', :to => 'application#render_404', :via => :all
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

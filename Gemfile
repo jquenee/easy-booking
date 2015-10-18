@@ -34,13 +34,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :test do
   gem 'byebug'
-  gem 'rspec', '3.3'
   gem 'webrat', '0.7.1'
 end
 
 group :development do
   gem 'byebug'
-  gem 'rspec-rails', '3.3'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

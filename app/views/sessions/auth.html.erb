@@ -1,0 +1,10 @@
+<h1>Identification</h1>
+
+<h2> <%= flash[:error] %> </h2>
+
+<%= form_for(:session, :url => sessions_path) do |f| %>
+  <div class="field">
+    <%= f.label :password, "Mot de passe" %><br />
+    <%= f.password_field :password %>
+  </div>
+<% end %>
