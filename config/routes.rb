@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # session_path - POST
   resources :sessions, :only => [:create]
   root 'sessions#new'
+  
+  get 'calendar' => 'calendar#show'
  
   match '*unmatched_route', :to => 'application#render_404', :via => :all
   # The priority is based upon order of creation: first created -> highest priority.

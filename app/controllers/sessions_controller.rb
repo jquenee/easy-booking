@@ -8,16 +8,18 @@ class SessionsController < ApplicationController
      render 'auth'
    else
      puts "welcome: #{cuser.session}"
-     redirect_to '/static-template/calendar.html'
+     sign_in(cuser)
+     redirect_to '/calendar'
    end
  end
 
  def create
-  if "password" == params[:session][:password]
+  if Rails.configuration.x.password == params[:session][:password]
     # session authenticated
     user = User.new(:session => session[:session_id])
     user.save
-    redirect_to '/static-template/calendar.html'
+    sign_in(user)
+    redirect_to '/calendar'
   else
     flash.now[:error] = "Mot de passe invalide."
     render 'auth'
