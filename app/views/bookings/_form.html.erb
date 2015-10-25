@@ -1,0 +1,61 @@
+<%= form_for(@booking) do |b| %>
+  <a type="back" class="btn btn-default" href="/calendar" ><span class="glyphicon glyphicon-arrow-left"></span></a>
+  <button type="submit" class="btn btn-danger">Enregistrer</button>
+  <p/>
+  <div class="form-group">
+    <%= b.label(:name,"Nom") %>
+    <%= b.text_field(:name, class: 'form-control', maxlength: '25', placeholder: 'Entrer un nom') %>
+  </div>
+  <div class="form-group phone">
+    <%= b.label(:phone,"Téléphone") %>
+    <%= b.text_field(:phone, class: 'form-control', maxlength: '10', placeholder: '0601020304') %>
+  </div>
+  <%= b.label(:start,"Début") %>
+  <div class="input-group date">
+     <%= b.text_field(:start, class: 'form-control form-date', placeholder: 'dd/mm/yyyy') %>
+     <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+  </div>
+  <%= b.label(:end,"Fin") %>
+  <div class="input-group date">
+    <%= b.text_field(:end, class: 'form-control form-date', placeholder: 'dd/mm/yyyy') %>
+    <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+  </div>
+  <br>
+  <div class="form-group form-number">
+    <%= b.label(:full_price,"Tarif Plein") %>
+    <%= b.number_field(:full_price, min: '0', value: '0', max: Rails.configuration.x.maxroom) %>
+   </div>
+  <div class="form-group form-number">
+    <%= b.label(:reduced_price,"Tarif Réduit") %>
+    <%= b.number_field(:reduced_price, min: '0', value: '0', max: Rails.configuration.x.maxroom) %>
+  </div>
+
+  <div class="selectbox">
+    <label for="contact">Contact</label>
+    <select name="contact">
+     <% @contacts.each do |contact| %>
+      <option value="<%= contact.id %>"><%= contact.name %></option>
+     <% end %>
+    </select>
+  </div>
+
+  <div class="checkbox">
+    <label><input type="checkbox" name="email" checked="true">Envoie d'email</label>
+  </div>
+  <a type="back" class="btn btn-default" href="/calendar"><span class="glyphicon glyphicon-arrow-left"></span></a>
+  <button type="submit" class="btn btn-danger">Enregistrer</button>
+<% end %>
+
+<script>
+    $('.input-group.date').datepicker({
+        format: "dd/mm/yyyy",
+        language: "fr",
+        todayHighlight: true
+    });
+
+    $("input[type='number']").TouchSpin({
+            initval: 40,
+            min: 0,
+            max: <%= Rails.configuration.x.maxroom %>,
+    });
+</script>

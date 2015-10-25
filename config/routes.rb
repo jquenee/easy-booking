@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'sessions#new'
   
   get 'calendar' => 'calendar#show'
+  resources :bookings, :only => [:new, :show, :create, :update, :destroy]  
  
   match '*unmatched_route', :to => 'application#render_404', :via => :all
   # The priority is based upon order of creation: first created -> highest priority.
