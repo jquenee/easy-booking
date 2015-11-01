@@ -1,0 +1,137 @@
+body {
+   margin: 1em;
+  }
+  
+  #main {
+   width: 100%;
+   margin-top: 1em;
+   float: left;
+  }
+
+ #prices {
+   position: relative;
+   right: 40px; 
+ }
+
+ #prices ul {
+  list-style-type:none;
+  }
+ 
+ #prices li {
+  margin-left:1px;
+  float:left; /*pour IE*/
+  }
+
+ #prices ul li {  
+  width: 160px;
+  text-decoration:none;
+ } 
+
+ table {
+   border: 1px solid #999;
+   border-collapse: collapse;
+   font-family: Georgia, Times, serif;
+   }
+   th {
+   border: 1px solid #999;
+   font-size: 90%;
+   text-transform: uppercase;
+   }
+   td {
+   border: 1px solid #999;
+   height: 10em;
+   width:  10em;
+   padding: 0.5em;
+   vertical-align: top;
+   }
+   .day {
+   position: relative;
+   text-align: right;
+   vertical-align: top;
+   }
+   .free {
+   margin: 1.5em;
+   text-align: center;
+   font-size: 120%;
+   opacity: 0.5;
+   }
+   
+   .free a {
+    color: black;   
+   }
+
+   .occupied {
+   background-color: #483C32;
+   color: #F0FFFF;
+   }
+   .total{
+   width: 100%;
+   text-align: left;
+   }
+   .weekend {
+   background-color: #F3F3F3;
+   }
+   .booking { width: 100%; height: 1.5em; text-align: center; color: black; cursor: pointer;}
+   .b1 { background: #FFCBA4; }
+   .b2 { background: #FFF8C6; }
+   .b3 { background: #CCFB5D; }
+   .b4 { background: #E0FFFF; }
+   .booking a {text-decoration: none; color: black;}
+   .booking:hover { background: red;}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 40%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000000;
+  opacity: 1;
+}
+.popup .close:hover {
+  color: orange;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.month {
+ font-size: 25px;
+ display: inline-block;
+ vertical-align: middle;
+ padding: 6px 12px;
+}

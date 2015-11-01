@@ -1,0 +1,26 @@
+ body {
+  margin: 1em;
+ }
+
+ label
+ {
+  display: block;
+  width: 100px;
+  float: left;
+ }
+ .form-group {
+ max-width: 20em;
+ }
+ .phone {
+ max-width: 10em;
+ }
+ .form-number {
+  max-width: 16em;
+ }
+ .date {
+  width: 11em;
+ }
+
+.field_with_errors input {
+ border:1px solid red;
+}
