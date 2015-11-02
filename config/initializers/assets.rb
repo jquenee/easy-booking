@@ -9,3 +9,16 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+
+# additional CSS
+Rails.application.config.assets.precompile += %w( booking.css )
+Rails.application.config.assets.precompile += %w( calendar.css )
+Rails.application.config.assets.precompile += %w( bootstrap.min.css )
+Rails.application.config.assets.precompile += %w( bootstrap-datepicker3.min.css )
+Rails.application.config.assets.precompile += %w( jquery.bootstrap-touchspin.min.css )
+
+# additional JS
+Rails.application.config.assets.precompile += %w( jquery-1.11.3.min.js )
+Rails.application.config.assets.precompile += %w( jquery.bootstrap-touchspin.min.js )
+Rails.application.config.assets.precompile += %w( bootstrap-datepicker.min.js )
+Rails.application.config.assets.precompile += %w( bootstrap-datepicker.fr.min.js )
