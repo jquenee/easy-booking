@@ -4,7 +4,8 @@ class BookingsController < ApplicationController
   before_action :set_contacts, only: [:new, :edit]
 
   def new
-   @booking = Booking.new
+   @booking = Booking.new(start: Date.strptime(params[:start], '%d%m%Y').strftime("%d/%m/%Y"))
+   @cmonth = Date.strptime(params[:start], '%d%m%Y').strftime("%m%Y")
   end
 
   def create
@@ -31,6 +32,7 @@ class BookingsController < ApplicationController
   # GET /bookings/1/edit
   # fill booking form with recorded data
   def edit
+    @cmonth = @booking.start.strftime("%m%Y")
   end
 
   # PATCH/PUT /bookings/1

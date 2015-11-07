@@ -72,10 +72,10 @@ body {
    background-color: #F3F3F3;
    }
    .booking { width: 100%; height: 1.5em; text-align: center; color: black; cursor: pointer;}
-   .b1 { background: #FFCBA4; }
-   .b2 { background: #FFF8C6; }
-   .b3 { background: #CCFB5D; }
-   .b4 { background: #E0FFFF; }
+   .b0 { background: #FFCBA4; }
+   .b1 { background: #FFF8C6; }
+   .b2 { background: #CCFB5D; }
+   .b3 { background: #E0FFFF; }
    .booking a {text-decoration: none; color: black;}
    .booking:hover { background: red;}
 

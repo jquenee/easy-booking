@@ -1,5 +1,5 @@
 <%= form_for(@booking) do |b| %>
-  <a type="back" class="btn btn-default" href="/calendar" ><span class="glyphicon glyphicon-arrow-left"></span></a>
+  <a type="back" class="btn btn-default" href="/calendar/<%= @cmonth %>" ><span class="glyphicon glyphicon-arrow-left"></span></a>
   <button type="submit" class="btn btn-danger">Enregistrer</button>
   <p/>
   <div class="form-group">
@@ -42,7 +42,7 @@
   <div class="checkbox">
     <label><input type="checkbox" name="email" checked="true">Envoie d'email</label>
   </div>
-  <a type="back" class="btn btn-default" href="/calendar"><span class="glyphicon glyphicon-arrow-left"></span></a>
+  <a type="back" class="btn btn-default" href="/calendar/<%= @cmonth %>"><span class="glyphicon glyphicon-arrow-left"></span></a>
   <button type="submit" class="btn btn-danger">Enregistrer</button>
 <% end %>
 
@@ -50,7 +50,8 @@
     $('.input-group.date').datepicker({
         format: "dd/mm/yyyy",
         language: "fr",
-        todayHighlight: true
+        todayHighlight: true,
+	orientation: "top"
     });
 
     $("input[type='number']").TouchSpin({

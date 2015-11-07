@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= Rails.configuration.x.name %> - Calendrier</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "calendar" %>  
+</style>
+</head>
+<body>
+ <h2><%= Rails.configuration.x.name %> - Calendrier</h2>
+
+ <div id="prices">
+   <ul class="h4">
+     <% @prices.each do |price| %>
+      <li><%= price.value %> <%= price.key %></li>
+     <% end %>
+    <li><a href="mode-emploi.pdf">MODE D’EMPLOI</a></li>
+  </ul>
+ </div>
+
+<div id="main">
+ <div class="hcalendar">
+    <a class="btn btn-success" href="/bookings/new?start=01<%= start_date.strftime("%m%Y") %>">Réserver</a>
+    <a class="btn btn-default" href="/calendar/<%= (date_range.first - 1.day).strftime("%m%Y") %>"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="btn btn-default" href="/calendar/<%= (date_range.last + 1.day).strftime("%m%Y") %>"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    <div class="month"><%= I18n.t("date.month_names")[start_date.month] %> <%= start_date.year %></div>
+ </div>
+
+  <table>
+    <col class="weekday" span="7">
+    <thead>
+      <tr>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th><%= I18n.t("date.day_names")[day.wday] %></th>
+        <% end %>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <tr>
+            <% week.each do |day| %>
+            <% if start_date.month == day.month %>
+              <%= td_occupied(day, @bookings).html_safe %>
+            <% else %>
+              <td></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
