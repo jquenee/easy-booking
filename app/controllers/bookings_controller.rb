@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
   before_filter :authenticate
+  # bug issue I don't understand why...
+  skip_before_filter :verify_authenticity_token, :only => :destroy
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   before_action :set_contacts, only: [:new, :edit]
 
@@ -10,8 +12,8 @@ class BookingsController < ApplicationController
 
   def create
    @booking = Booking.new(booking_params)
-
-    respond_to do |format|
+   @booking.contact = Contact.find(params[:contact])
+   respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
@@ -25,8 +27,12 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1
   def show
-    puts "Show calendar from this date: " + @booking.start.strftime("%d/%m/%Y")
-    redirect_to '/calendar/' + @booking.start.strftime("%m%Y")
+    respond_to do |format|
+     # show calendar from starting booking date
+     format.html { redirect_to '/calendar/' + @booking.start.strftime("%m%Y") }
+     # give booking detail for ajax call
+     format.json { render json: {:booking => @booking, :night => 10, :total => 100, :contact => @booking.contact } }
+    end
   end
 
   # GET /bookings/1/edit
@@ -55,7 +61,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to '/calendar/' + @booking.start.strftime("%m%Y"), notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

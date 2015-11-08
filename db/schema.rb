@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20151024154954) do
 
   create_table "bookings", force: :cascade do |t|
+    t.belongs_to :contact, index: true
     t.string   "name"
     t.string   "phone"
     t.date     "start"

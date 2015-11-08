@@ -4,7 +4,8 @@
   <title><%= Rails.configuration.x.name %> - Calendrier</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <%= stylesheet_link_tag "bootstrap.min" %>
-  <%= stylesheet_link_tag "calendar" %>  
+  <%= stylesheet_link_tag "calendar" %>
+  <%= javascript_include_tag "jquery-1.11.3.min" %>  
 </style>
 </head>
 <body>
@@ -52,5 +53,64 @@
     </tbody>
   </table>
 </div>
+
+<div id="popup" class="overlay">
+ <div class="popup">
+        <h2>Réservation - Tristan</h2>
+        <a class="close" href="#">×</a>
+
+        <div class="content">
+        <h3><a class="phone" href="tel:0607080405">0607080405</a></h3>
+        <ul>
+          <li class="full">Tarif Plien: 2</li>
+          <li class="reduced">Tarif Réduit: 1</li>
+          <li class="night">Nuits: 3</li>
+          <li class="total">Prix: 40€</li>
+        </ul>
+        <h4 class="date">06/10/2015 au 09/10/2015</h4>
+        <h4 class="contact">Contact: Joris - <a class="cphone" href="tel:0600606009">0600606009</a></h4>
+        </div>
+        <div class="action">
+            <form id="delete" class="delete" method="post" action="/bookings/">
+              <input type="hidden" name="_method" value="delete" />
+            </form>
+            <a class="btn btn-danger" href="#" rel="nofollow">Supprimer</a>
+            <a class="btn pull-right btn-success" href="booking">Modifier</a>
+        </div>
+ </div>
+</div>
+
+<script>
+function set_detail() {
+  var id = $(this).attr('id');
+  $.getJSON( "/bookings/"+id, function( json ) { booking(json); }); 
+}
+
+function booking(data) {
+ console.log(data);
+ var popup = $("div.popup");
+ popup.find("h2").text("Réservation - " + data.booking.name);
+ popup.find("a.phone").attr('href', "tel:" + data.booking.phone);
+ popup.find("a.phone").text(data.booking.phone);
+ popup.find("li.full").text("Tarif Plein: " + data.booking.full_price);
+ popup.find("li.reduced").text("Tarif Réduit: " + data.booking.reduced_price);
+ popup.find("li.night").text("Nuits: " + data.night);
+ popup.find("li.total").text("Prix: " + data.total + "€");
+ popup.find("h4.date").text(data.booking.start + " au " + data.booking.end);
+ popup.find("h4.contact").html("Contact: "+ data.contact.name +" - <a href='tel:"+ data.contact.phone +"'>"+ data.contact.phone +"</a>");
+
+ popup.find("form.delete").attr('action', "/bookings/" + data.booking.id);
+ popup.find("a.btn-success").attr('href', "/bookings/"+ data.booking.id +"/edit");
+}
+
+function submit_delete() {
+ $("form.delete").submit();
+ console.log("deleted: " + $("form.delete").attr('action'));
+}
+
+$("a.booking").click(set_detail);
+$("a.btn-danger").click(submit_delete);
+</script>
+
 </body>
 </html>

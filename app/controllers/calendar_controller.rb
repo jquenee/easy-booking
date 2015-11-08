@@ -2,11 +2,13 @@ class CalendarController < ApplicationController
  attr_accessor :start_date
  before_filter :authenticate
  helper_method :start_date, :date_range, :td_occupied
-  
+ 
+  # provide table of date for the calendar 
   def date_range
     (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a
   end
 
+ # build HTML block for one day booking
  def td_occupied(day, bookings)
    div_day = "<div class=\"day\">" << day.mday.to_s << "</div>"
    divs = ""
@@ -15,7 +17,7 @@ class CalendarController < ApplicationController
    bookings.each do |booking|
     # occupied
     if booking.start <= day and booking.end >= day
-      divs +=  "<div class=\"booking b" << gcounter.modulo(4).to_s << "\">" << booking.name << "</div>"
+      divs +=  "<div class=\"booking b" << gcounter.modulo(4).to_s << "\">" << "<a class=\"booking\"  href=\"#popup\" id=" << booking.id.to_s << ">" << booking.name << "</a>"<< "</div>"
       gcounter = gcounter.next
       total += booking.full_price + booking.reduced_price
     end

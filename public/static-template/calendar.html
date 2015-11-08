@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
   <link rel="stylesheet" href="../stylesheets/calendar.css">
-</style>
+  <script src="../javascripts/jquery-1.11.3.min.js"></script>
 </head>
 <body>
  <h2>Saint-Malo - Calendrier</h2>
@@ -50,8 +50,8 @@
       <td><div class="day">5</div><div class="free"><a href="booking">Libre</a></div></td>
       <td class="occupied">
 	  <div class="day">6</div>
-	  <div class="booking b1"><a href="#popup">Tristan</a></div>
-	  <div class="booking b2">Joris Quénée</div>
+	  <div class="booking b1"><a class="booking" id=12 href="#popup">Tristan</a></div>
+	  <div class="booking b2"><a class="booking" id=13 href="#popup">Joris Quénée</a></div>
           <div class="booking b3">Mayelle Quénée</div>
           <div class="booking b4">Isabelle Quénée</div>
           <div class="booking b1">Elodie Dauguet</div>
@@ -131,6 +131,15 @@
 	</div>
  </div>
 </div>
+
+<script>
+function notify() {
+  var id = $(this).attr('id');
+  console.log("clicked:" + id);
+  $("div.popup").find("h2").text("Réservation " + $(this).text());
+}
+$("a.booking").click(notify);
+</script>
 
 </body>
 </html>
