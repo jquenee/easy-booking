@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
 
   def create
    @booking = Booking.new(booking_params)
-   @booking.contact = Contact.find(params[:contact])
    respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'User was successfully created.' }

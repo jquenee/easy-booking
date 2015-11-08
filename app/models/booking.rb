@@ -21,7 +21,7 @@ class Booking < ActiveRecord::Base
   end
 
   def check_dates
-   if self.start > self.end
+   if self.end != nil and self.start > self.end
      errors.add(:base, 'Dates: merci de mettre une date de début inférieur ou égale à la date de fin')
      return false
    end
