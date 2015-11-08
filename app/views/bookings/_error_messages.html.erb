@@ -2,7 +2,7 @@
   <div id="error_explanation">
     <h4><%= pluralize(@booking.errors.count, "erreur") %> 
         ont empêché d'enregistrer votre inscription</h4>
-    <p>Merci de corriger les champs en rouges</p>
+    <p>Merci de corriger les erreurs suivantes:</p>
     <ul>
     <% @booking.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

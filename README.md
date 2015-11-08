@@ -2,14 +2,14 @@
 Simple booking solution with Ruby on Rails
 
 TODO List:
-- fix date issue in update bad format
-- fix line issue when several bookings
-- fix date verification
-- update contact data too
+- fix line issue when several bookings (modulo on record id)
+- compute night
+- compute total price
 - send email
 - check room still avialable
-- configuration file
+- configuration file for Saint Malo
 - installation guide
+- redirect to new saint website
 
 INSTALLATION - DRAFT
 

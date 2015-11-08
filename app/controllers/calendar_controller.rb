@@ -40,8 +40,8 @@ class CalendarController < ApplicationController
   end
   self.start_date = Date.strptime(@date, '%m%Y')
   @bookings = Booking.where("start <= :end_date AND end >= :start_date",
-  {start_date: self.start_date.beginning_of_month.strftime("%Y-%m-%d"), 
-   end_date: self.start_date.end_of_month.strftime("%Y-%m-%d")})
+  {start_date: self.start_date.beginning_of_month, 
+   end_date: self.start_date.end_of_month})
   puts "Show date " + @date 
  end
  

@@ -10,6 +10,7 @@ class Booking < ActiveRecord::Base
   validates :reduced_price, :presence => true
 
   validate :check_prices
+  validate :check_dates
 
   def check_prices
    if full_price == 0 and reduced_price == 0
@@ -17,6 +18,14 @@ class Booking < ActiveRecord::Base
      return false
   end
   return true
- end
+  end
+
+  def check_dates
+   if self.start > self.end
+     errors.add(:base, 'Dates: merci de mettre une date de début inférieur ou égale à la date de fin')
+     return false
+   end
+   return true
+  end
 
 end
