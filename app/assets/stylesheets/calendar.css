@@ -76,6 +76,9 @@ body {
    .b1 { background: #FFF8C6; }
    .b2 { background: #CCFB5D; }
    .b3 { background: #E0FFFF; }
+   .b4 { background: #FCDFFF; }
+   .b5 { background: #FEFCFF; }
+   .b6 { background: #F75D59; }
    .booking a {text-decoration: none; color: black;}
    .booking:hover { background: red;}
 

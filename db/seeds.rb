@@ -3,10 +3,10 @@
 class InitialData < ActiveRecord::Migration
   def import_prices
     Price.delete_all
-    Price.create({"key" => "Travailleur", "value"=>"12€"})
-    Price.create({"key" => "Chomeur", "value"=>"5€"})
-    Price.create({"key" => "Etudiant", "value"=>"5€"})
-    Price.create({"key" => "Enfant", "value"=>"5€"})
+    Price.create({"key" => "Travailleur", "value"=> Rails.configuration.x.full_price.to_s << "€"})
+    Price.create({"key" => "Chomeur", "value"=> Rails.configuration.x.reduced_price.to_s << "€"})
+    Price.create({"key" => "Etudiant", "value"=> Rails.configuration.x.reduced_price.to_s << "€"})
+    Price.create({"key" => "Enfant", "value"=> Rails.configuration.x.reduced_price.to_s << "€"})
   end
 
   def import_contacts

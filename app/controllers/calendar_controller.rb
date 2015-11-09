@@ -12,13 +12,11 @@ class CalendarController < ApplicationController
  def td_occupied(day, bookings)
    div_day = "<div class=\"day\">" << day.mday.to_s << "</div>"
    divs = ""
-   gcounter = 0
    total = 0
    bookings.each do |booking|
     # occupied
     if booking.start <= day and booking.end >= day
-      divs +=  "<div class=\"booking b" << gcounter.modulo(4).to_s << "\">" << "<a class=\"booking\"  href=\"#popup\" id=" << booking.id.to_s << ">" << booking.name << "</a>"<< "</div>"
-      gcounter = gcounter.next
+      divs +=  "<div class=\"booking b" << booking.id.modulo(7).to_s << "\">" << "<a class=\"booking\"  href=\"#popup\" id=" << booking.id.to_s << ">" << booking.name << "</a>"<< "</div>"
       total += booking.full_price + booking.reduced_price
     end
    end

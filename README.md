@@ -2,9 +2,6 @@
 Simple booking solution with Ruby on Rails
 
 TODO List:
-- fix line issue when several bookings (modulo on record id)
-- compute night
-- compute total price
 - send email
 - check room still avialable
 - configuration file for Saint Malo

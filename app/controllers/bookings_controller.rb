@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_filter :authenticate
-  # bug issue I don't understand why...
+  # bug, I don't understand why...
   skip_before_filter :verify_authenticity_token, :only => :destroy
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   before_action :set_contacts, only: [:new, :edit]
@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
    @booking = Booking.new(booking_params)
    respond_to do |format|
       if @booking.save
+        email_all_booking_message(@booking)
         format.html { redirect_to @booking, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
@@ -30,7 +31,7 @@ class BookingsController < ApplicationController
      # show calendar from starting booking date
      format.html { redirect_to '/calendar/' + @booking.start.strftime("%m%Y") }
      # give booking detail for ajax call
-     format.json { render json: {:booking => @booking, :night => 10, :total => 100, :contact => @booking.contact } }
+     format.json { render json: {:booking => @booking, :night => night(@booking), :total => total(@booking), :contact => @booking.contact } }
     end
   end
 
@@ -45,6 +46,7 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
+        email_all_booking_message(@booking)
         format.html { redirect_to @booking, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking }
       else
