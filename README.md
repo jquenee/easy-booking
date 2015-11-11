@@ -45,5 +45,5 @@ rails s -b 192.168.0.66 -e production
 * Update contacts list: db/seeds.rb
 * Run database update
 ```
-rake db:seed
+rake db:seed RAILS_ENV=production
 ```
