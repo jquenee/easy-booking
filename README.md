@@ -14,7 +14,12 @@ git clone https://github.com/jquenee/easy-booking.git
 ```
 * Redirect incoming request from 80 to 3000 (example)
 ```
-iptables -t nat -I PREROUTING --src 0/0 --dst 192.168.0.66 -p tcp --dport 80 -j REDIRECT --to-ports 3000
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 3000
+sudo iptables -t nat -I OUTPUT -p tcp -d 192.168.0.66 --dport 80 -j REDIRECT --to-ports 3000
+iptables -L -v -n
+iptables-save
 ```
 * Update website setting: config/initializers/agenda.rb
 * Update contacts list: db/seeds.rb
