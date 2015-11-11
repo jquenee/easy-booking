@@ -23,6 +23,7 @@ iptables-save
 ```
 * Update website setting: config/initializers/agenda.rb
 * Update contacts list: db/seeds.rb
+* Update "mode d'emploi": public/mode-emploi.pdf
 * Set secret key
 ```
 rake secret
