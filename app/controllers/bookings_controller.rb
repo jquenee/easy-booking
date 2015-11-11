@@ -14,7 +14,9 @@ class BookingsController < ApplicationController
    @booking = Booking.new(booking_params)
    respond_to do |format|
       if @booking.save
-        email_all_booking_message(@booking)
+        if params[:email] == "on"
+         email_all_booking_message(@booking)
+        end
         format.html { redirect_to @booking, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
@@ -46,7 +48,9 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
-        email_all_booking_message(@booking)
+        if params[:email] == "on"
+         email_all_booking_message(@booking)
+        end
         format.html { redirect_to @booking, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking }
       else
