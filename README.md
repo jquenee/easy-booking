@@ -39,7 +39,7 @@ rake db:setup RAILS_ENV=production
 ```
 * Run server (example)
 ```
-rails s -b 192.168.0.66 -e production
+rails s -d -b 192.168.0.66 -e production
 ```
 
 ## Update contact list (after installation)
