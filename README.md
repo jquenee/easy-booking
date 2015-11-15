@@ -8,6 +8,11 @@ Contacts list is pre-fixed by setting. When a booking is recorded an email a sen
 
 ## From scratch installation
 * Install ruby on rails: http://rubyonrails.org/download/
+* Install basic gem
+```
+gem install rails -v 4.2.4
+gem install bundler
+```
 * Download solution
 ```
 git clone https://github.com/jquenee/easy-booking.git
@@ -24,6 +29,10 @@ iptables-save
 * Update website setting: config/initializers/agenda.rb
 * Update contacts list: db/seeds.rb
 * Update "mode d'emploi": public/mode-emploi.pdf
+* Download gems dependencies
+```
+bundle install
+```
 * Set secret key
 ```
 rake secret

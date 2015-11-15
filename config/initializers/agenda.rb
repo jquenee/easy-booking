@@ -1,6 +1,6 @@
 # Website settings
 Myapp::Application.config.x.website_url = ""
-Myapp::Application.config.x.name = "Saint Malo"
+Myapp::Application.config.x.name = "Change Me"
 Myapp::Application.config.x.password = ""
 Myapp::Application.config.x.maxroom = 15
 Myapp::Application.config.x.full_price = 12
