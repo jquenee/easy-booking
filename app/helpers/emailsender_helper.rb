@@ -12,7 +12,7 @@ module EmailsenderHelper
   message << "Une nouvelle réservation a été effectuée du " << booking.start.to_s << " au " << booking.end.to_s << " pour " << booking.name << ".\n"
   message << "Cette réservation a été effectuée par " << contact.name << " joignable au " << contact.phone << ".\n"
   message << (booking.full_price + booking.reduced_price).to_s << " personne(s) prévue(s) en plus.\n\n"
-  message << "Pour visualiser le caldendrier merci de vous connecter à http://" << Rails.configuration.x.website_url << "\n"
+  message << "Pour visualiser le calendrier merci de vous connecter à http://" << Rails.configuration.x.website_url << "\n"
   message << "Mot de passe: " << Rails.configuration.x.password 
 
   smtp = Net::SMTP.new(Rails.configuration.x.email_smtp_ip, Rails.configuration.x.email_smtp_port)
