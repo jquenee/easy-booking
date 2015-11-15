@@ -5,10 +5,12 @@ module EmailsenderHelper
   contact = Contact.find(booking.contact_id)
   message = "From: WebCalendar <noreply@" << Rails.configuration.x.email_smtp_domain << ">\n"
   message << "To: " << emails.to_s << "\n"
+  message << "Content-Type: text/plain; charset=\"utf-8\"\n"
+  message << "Content-Transfer-Encoding: 8bit\n"
   message << "Subject: [" << Rails.configuration.x.name << "] Nouvelle réservation\n\n"
   message << "Ceci est un email automatique.\n"
   message << "Une nouvelle réservation a été effectuée du " << booking.start.to_s << " au " << booking.end.to_s << " pour " << booking.name << ".\n"
-  message << "Cette réservation a été effectuée par " << contact.name << " joignale au " << contact.phone << ".\n"
+  message << "Cette réservation a été effectuée par " << contact.name << " joignable au " << contact.phone << ".\n"
   message << (booking.full_price + booking.reduced_price).to_s << " personne(s) prévue(s) en plus.\n\n"
   message << "Pour visualiser le caldendrier merci de vous connecter à http://" << Rails.configuration.x.website_url << "\n"
   message << "Mot de passe: " << Rails.configuration.x.password 
