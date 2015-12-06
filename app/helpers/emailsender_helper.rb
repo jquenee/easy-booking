@@ -15,24 +15,27 @@ module EmailsenderHelper
   message << "Pour visualiser le calendrier merci de vous connecter à http://" << Rails.configuration.x.website_url << "\n"
   message << "Mot de passe: " << Rails.configuration.x.password 
 
-  smtp = Net::SMTP.new(Rails.configuration.x.email_smtp_ip, Rails.configuration.x.email_smtp_port)
-  # debug option
-  if Rails.configuration.x.email_debug
-    smtp.set_debug_output $stderr
-    puts "emails to:"
-    puts emails.to_s
-    puts "message to send:"
-    puts message
-  end
-  if Rails.configuration.x.email_smtp_ttls
+  # asynchronous call for better front-end UX experience
+  Thread.new {
+   smtp = Net::SMTP.new(Rails.configuration.x.email_smtp_ip, Rails.configuration.x.email_smtp_port)
+   # debug option
+   if Rails.configuration.x.email_debug
+     smtp.set_debug_output $stderr
+     puts "emails to:"
+     puts emails.to_s
+     puts "message to send:"
+     puts message
+   end
+   if Rails.configuration.x.email_smtp_ttls
   	smtp.enable_starttls
-  else
+   else
 	smtp.disable_starttls
-  end
-  smtp.start(Rails.configuration.x.email_smtp_domain, Rails.configuration.x.email_smtp_login, Rails.configuration.x.email_smtp_password, Rails.configuration.x.email_authtype) do
-  	smtp.send_message(message, "noreply@" << Rails.configuration.x.email_smtp_domain, emails)
-  end
- end
+   end
+   smtp.start(Rails.configuration.x.email_smtp_domain, Rails.configuration.x.email_smtp_login, Rails.configuration.x.email_smtp_password, Rails.configuration.x.email_authtype) do
+   	 smtp.send_message(message, "noreply@" << Rails.configuration.x.email_smtp_domain, emails)
+   end
+  } 
+end
 
  private
 
