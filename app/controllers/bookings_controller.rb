@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
-  before_filter :authenticate
+  before_action :authenticate
   # bug, I don't understand why...
-  skip_before_filter :verify_authenticity_token, :only => :destroy
+  skip_before_action :verify_authenticity_token, :only => :destroy
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   before_action :set_contacts, only: [:new, :edit]
 

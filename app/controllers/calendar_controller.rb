@@ -1,6 +1,6 @@
 class CalendarController < ApplicationController
  attr_accessor :start_date
- before_filter :authenticate
+ before_action :authenticate
  helper_method :start_date, :date_range, :td_occupied
  
   # provide table of date for the calendar 

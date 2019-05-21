@@ -1,6 +1,6 @@
 # ruby encoding: utf-8
 
-class InitialData < ActiveRecord::Migration
+class InitialData < ActiveRecord::Migration[5.2]
   def import_prices
     Price.delete_all
     Price.create({"key" => "Travailleur", "value"=> Rails.configuration.x.full_price.to_s << "€"})
