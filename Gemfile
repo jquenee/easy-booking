@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.2.3'
 # Use sqlite3 as the database for Active Record
@@ -38,7 +37,7 @@ group :test do
 end
 
 group :development do
-  gem 'byebug'
+  # gem 'byebug'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console'
 
