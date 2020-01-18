@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
   before_action :set_contacts, only: [:new, :edit]
 
   def new
-   @booking = Booking.new(start: Date.strptime(params[:start], '%d%m%Y').strftime("%d/%m/%Y"))
+   @booking = Booking.new(start: Date.strptime(params[:start], '%d%m%Y').strftime("%d/%m/%Y"), end: Date.strptime(params[:start], '%d%m%Y').strftime("%d/%m/%Y"))
    @cmonth = Date.strptime(params[:start], '%d%m%Y').strftime("%m%Y")
   end
 
@@ -75,12 +75,12 @@ class BookingsController < ApplicationController
     def set_contacts
      @contacts = Contact.all
     end
-    
+
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
       @booking = Booking.find(params[:id])
     end
-   
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
       params.require(:booking).permit(:name, :phone, :start, :end, :full_price, :reduced_price, :contact_id)
