@@ -3,11 +3,23 @@ Rails.application.routes.draw do
   # session_path - POST
   resources :sessions, :only => [:create]
   root 'sessions#new'
-  
+
   get 'calendar' => 'calendar#show'
   resources :calendar, :only => [:show]
-  resources :bookings, :only => [:new, :show, :create, :edit, :update, :destroy]  
- 
+  resources :bookings, :only => [:new, :show, :create, :edit, :update, :destroy]
+
+  get 'admin' => 'admin#show'
+  resources :admin, :only => [:show]
+
+  # price_path / needed for form_for
+  resources :price, :only => [:create, :update, :destroy]
+
+  # contact_path / needed for form_for
+  resources :contact, :only => [:create, :update, :destroy]
+
+  # setting_path
+  resources :setting, :only => [:update]
+
   match '*unmatched_route', :to => 'application#render_404', :via => :all
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

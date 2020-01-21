@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= Rails.configuration.x.name %> - Calendrier</title>
+  <title><%= @website_name %> - Calendrier</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <%= stylesheet_link_tag "bootstrap.min" %>
   <%= stylesheet_link_tag "calendar" %>
-  <%= javascript_include_tag "jquery-1.11.3.min" %>  
-</style>
+  <%= javascript_include_tag "jquery-1.11.3.min" %>
 </head>
 <body>
- <h2><%= Rails.configuration.x.name %> - Calendrier</h2>
+ <h2><%= @website_name %> - Calendrier</h2>
 
  <div id="prices">
    <ul class="h4">
@@ -37,7 +36,7 @@
         <% end %>
       </tr>
     </thead>
-  
+
     <tbody>
       <% date_range.each_slice(7) do |week| %>
         <tr>
@@ -83,7 +82,7 @@
 <script>
 function set_detail() {
   var id = $(this).attr('id');
-  $.getJSON( "/bookings/"+id, function( json ) { booking(json); }); 
+  $.getJSON( "/bookings/"+id, function( json ) { booking(json); });
 }
 
 function booking(data) {

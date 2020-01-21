@@ -14,7 +14,10 @@ class SessionsController < ApplicationController
  end
 
  def create
-  if Rails.configuration.x.password == params[:session][:password]
+  # setting = Settings.where(key: "website_password").first
+  setting = Settings.find_by_key('website_password')
+  # logger.info("PASSWORD: #{setting.value}, KEY: #{setting.key}, ID: #{setting.id}")
+  if setting.value == params[:session][:password]
     # session authenticated
     user = User.new(:session => session[:session_id])
     user.save

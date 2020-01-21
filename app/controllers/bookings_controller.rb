@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   # bug, I don't understand why...
   skip_before_action :verify_authenticity_token, :only => :destroy
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_settings, only: [:new, :show, :edit]
   before_action :set_contacts, only: [:new, :edit]
 
   def new
@@ -79,6 +80,11 @@ class BookingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
       @booking = Booking.find(params[:id])
+    end
+
+    def set_settings
+      @maxroom = Settings.find_by_key('maxroom').value.to_i
+      @website_name = Settings.find_by_key('website_name').value
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

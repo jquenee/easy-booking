@@ -1,0 +1,69 @@
+<h3>General Settings</h3>
+
+<table>
+  <tbody>
+    <% @settings.each do |setting| %>
+    <tr>
+      <%= form_for(setting) do |s| %>
+        <td><%= setting.key %></td>
+        <td><%= s.text_field(:value, class: 'form-group', maxlength: '25') %></td>
+        <td><%= button_to "update", {controller: :setting, action: :update, id: setting.id}, method: :patch, class: "btn btn-warning" %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Prices</h3>
+<table>
+  <tbody>
+  <% @prices.each do |price| %>
+  <tr>
+      <%= form_for(price) do |p| %>
+        <td><%= price.id %></td>
+        <td><%= p.text_field(:key, class: 'form-group', maxlength: '10') %></td>
+        <td><%= p.text_field(:value, class: 'form-group', maxlength: '10') %></td>
+        <td><%= button_to "update", {controller: :price, action: :update, id: price.id}, method: :patch, class: "btn btn-warning" %></td>
+        <td><%= button_to "delete", {controller: :price, action: :destroy, id: price.id}, method: :delete, class: "btn btn-danger" %></td>
+      <% end %>
+  </tr>
+  <% end %>
+  <tr>
+    <%= form_for(@new_price, url: {controller: :price, action: :create}) do |nc| %>
+      <td></td>
+      <td><%= nc.text_field(:key, class: 'form-group', maxlength: '10') %></td>
+      <td><%= nc.text_field(:value, class: 'form-group', maxlength: '10') %></td>
+      <td><%= button_to "add", {controller: :price, action: :create}, method: :post, class: "btn btn-sucess" %></td>
+      <td></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>
+
+<h3>Contacts</h3>
+<table>
+    <tbody>
+        <% @contacts.each do |contact| %>
+        <tr>
+            <%= form_for(contact) do |c| %>
+              <td><%= contact.id %></td>
+              <td><%= c.text_field(:name, class: 'form-group', maxlength: '10') %></td>
+              <td><%= c.text_field(:phone, class: 'form-group', maxlength: '10') %></td>
+              <td><%= c.text_field(:email, class: 'form-group', maxlength: '30') %></td>
+              <td><%= button_to "update", {controller: :contact, action: :update, id: contact.id}, method: :patch, class: "btn btn-warning" %></td>
+              <td><%= button_to "delete", {controller: :contact, action: :destroy, id: contact.id}, method: :delete, class: "btn btn-danger" %></td>
+            <% end %>
+        </tr>
+        <% end %>
+        <tr>
+          <%= form_for(@new_contact, url: {controller: :contact, action: :create}) do |nc| %>
+            <td></td>
+            <td><%= nc.text_field(:name, class: 'form-group', maxlength: '10') %></td>
+            <td><%= nc.text_field(:phone, class: 'form-group', maxlength: '10') %></td>
+            <td><%= nc.text_field(:email, class: 'form-group', maxlength: '30') %></td>
+            <td><%= button_to "add", {controller: :contact, action: :create}, method: :post, class: "btn btn-sucess" %></td>
+            <td></td>
+          <% end %>
+        </tr>
+    </tbody>
+</table>

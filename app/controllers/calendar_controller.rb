@@ -2,8 +2,8 @@ class CalendarController < ApplicationController
  attr_accessor :start_date
  before_action :authenticate
  helper_method :start_date, :date_range, :td_occupied
- 
-  # provide table of date for the calendar 
+
+  # provide table of date for the calendar
   def date_range
     (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a
   end
@@ -28,9 +28,10 @@ class CalendarController < ApplicationController
    div_total = "<div class=\"total\">" << total.to_s << " personnes</div>"
    return "<td class=\"occupied\">" << div_day << divs << div_total << "</td>"
  end
- 
+
  # GET /calendar/012015
  def show
+  @website_name = Settings.find_by_key('website_name').value
   @prices = Price.all
   @date = params[:id]
   if @date == nil
@@ -38,9 +39,9 @@ class CalendarController < ApplicationController
   end
   self.start_date = Date.strptime(@date, '%m%Y')
   @bookings = Booking.where("start <= :end_date AND end >= :start_date",
-  {start_date: self.start_date.beginning_of_month, 
+  {start_date: self.start_date.beginning_of_month,
    end_date: self.start_date.end_of_month})
-  puts "Show date " + @date 
+  puts "Show date " + @date
  end
- 
+
 end

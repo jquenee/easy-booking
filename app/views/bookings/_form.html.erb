@@ -23,11 +23,11 @@
   <br>
   <div class="form-group form-number">
     <%= b.label(:full_price,"Tarif Plein") %>
-    <%= b.number_field(:full_price, min: '0', max: Rails.configuration.x.maxroom) %>
+    <%= b.number_field(:full_price, min: '0', max: @maxroom) %>
    </div>
   <div class="form-group form-number">
     <%= b.label(:reduced_price,"Tarif Réduit") %>
-    <%= b.number_field(:reduced_price, min: '0', max: Rails.configuration.x.maxroom) %>
+    <%= b.number_field(:reduced_price, min: '0', max: @maxroom) %>
   </div>
 
   <div class="selectbox">
@@ -61,6 +61,6 @@
     $("input[type='number']").TouchSpin({
             initval: 0,
             min: 0,
-            max: <%= Rails.configuration.x.maxroom %>,
+            max: <%= @maxroom %>,
     });
 </script>

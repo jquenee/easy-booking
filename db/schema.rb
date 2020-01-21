@@ -46,4 +46,10 @@ ActiveRecord::Schema.define(version: 20151024154954) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "settings", force: :cascade do |t|
+    t.string  "key"
+    t.string  "vtype" # string, integer, boolean
+    t.string  "value"
+  end
+
 end
