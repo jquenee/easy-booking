@@ -10,7 +10,7 @@ Contacts list is pre-fixed by setting. When a booking is recorded an email a sen
 * Install ruby on rails: http://rubyonrails.org/download/
 * Install basic gem
 ```
-gem install rails -v 5.2.3
+gem install rails -v 6.0.2.1
 gem install bundler
 ```
 * Download solution
