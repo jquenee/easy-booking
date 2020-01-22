@@ -51,9 +51,41 @@ rake db:setup RAILS_ENV=production
 rails s -d -b 192.168.0.66 -e production
 ```
 
-## Update contact list (after installation)
-* Update contacts list: db/seeds.rb
-* Run database update
+## Upgrade procedure
+* Backup settings and database
 ```
-rake db:seed RAILS_ENV=production
+db/production.sqlite3
+config/initializers/agenda.rb
+public/mode-emploi.pdf
+```
+* Dump database in SQL file
+```
+$ sqlite3 db/production.sqlite3
+.output production.sql
+.dump
+.exit
+```
+* Refactore manually SQL file according db change
+```
+vim production.sql
+```
+* Stop the server
+```
+kill -9 `cat tmp/pids/server.pid`
+```
+* Remove the existing database
+```
+rm db/production.sqlite3
+```
+* Reinit from scratch the db with the seeds.rb according the change
+```
+rake db:setup RAILS_ENV=production
+```
+* Import SQL file
+```
+sqlite3 db/production.sqlite3 < db/production.sql
+```
+* Start the server
+```
+rails s -d -b 192.168.0.66 -e production
 ```
