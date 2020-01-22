@@ -1,8 +1,8 @@
 # easy-booking
 Simple booking solution with Ruby on Rails.
-This calendar principle is to organize online booking for a place managed by a group of contact.
+This calendar principle is to organize online booking managed by a group of contacts.
 Those contacts access to this website by a single password. A contact can book for his friend or himself a room.
-Contacts list is pre-fixed by setting. When a booking is recorded an email a sent to all contacts.
+Contacts list is pre-fixed by setting. When a booking is recorded, an email is sent to all contacts.
 
 # INSTALLATION GUIDE
 
