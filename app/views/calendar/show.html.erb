@@ -15,7 +15,7 @@
      <% @prices.each do |price| %>
       <li><%= price.value %> <%= price.key %></li>
      <% end %>
-    <li><a href="/mode-emploi.pdf">MODE D’EMPLOI</a></li>
+    <li><a href="/mode-emploi.pdf?<%= (Time.now.to_f * 1000).to_i %>">MODE D’EMPLOI</a></li>
   </ul>
  </div>
 

@@ -51,5 +51,4 @@ ActiveRecord::Schema.define(version: 20151024154954) do
     t.string  "vtype" # string, integer, boolean
     t.string  "value"
   end
-
 end

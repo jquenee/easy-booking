@@ -29,4 +29,11 @@ class SessionsController < ApplicationController
   end
  end
 
+ # DELETE /sessions/
+ def destroyall
+   User.delete_all
+   logger.info("all sessions have been removed correctly")
+   redirect_to '/admin'
+ end
+
 end

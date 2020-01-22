@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   # session_path - POST
-  resources :sessions, :only => [:create]
+  resources :sessions, :only => [:create,]
+  delete 'sessions/', to: 'sessions#destroyall'
   root 'sessions#new'
 
   get 'calendar' => 'calendar#show'
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   resources :bookings, :only => [:new, :show, :create, :edit, :update, :destroy]
 
   get 'admin' => 'admin#show'
+  post 'admin/upload', to: 'admin#upload'
   resources :admin, :only => [:show]
 
   # price_path / needed for form_for

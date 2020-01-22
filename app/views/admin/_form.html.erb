@@ -1,5 +1,21 @@
-<h3>General Settings</h3>
+<h3>Sessions</h3>
+<table>
+  <tbody>
+    <tr>
+        <td>Current open sessions <%= @sessions.size %></td>
+        <td><%= button_to "truncate", {controller: :sessions, action: :destroyall}, method: :delete, class: "btn btn-danger" %></td>
+    </tr>
+  </tbody>
+</table>
 
+<h3>Upload manual</h3>
+<%= form_for :manual, url: "admin/upload" do |form| %>
+  <a href="/mode-emploi.pdf?<%= (Time.now.to_f * 1000).to_i %>">MODE D’EMPLOI</a>
+  <%= form.file_field :file %>
+  <%= form.submit "upload", class: "btn btn-warning"%>
+<% end  %>
+
+<h3>General Settings</h3>
 <table>
   <tbody>
     <% @settings.each do |setting| %>
