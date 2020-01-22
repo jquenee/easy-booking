@@ -3,7 +3,7 @@
   <tbody>
     <tr>
         <td>Current open sessions <%= @sessions.size %></td>
-        <td><%= button_to "truncate", {controller: :sessions, action: :destroyall}, method: :delete, class: "btn btn-danger" %></td>
+        <td><%= button_to "purge", {controller: :sessions, action: :destroyall}, method: :delete, class: "btn btn-danger" %></td>
     </tr>
   </tbody>
 </table>

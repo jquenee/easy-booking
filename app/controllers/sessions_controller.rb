@@ -26,16 +26,7 @@ class SessionsController < ApplicationController
   website_password = Settings.find_by_key('website_password')
   admin_password = Settings.find_by_key('admin_password')
   # logger.info("PASSWORD: #{setting.value}, KEY: #{setting.key}, ID: #{setting.id}")
-  if website_password.value == params[:session][:password]
-    # session authenticated
-    # record in database (file)
-    user = User.new(:session => session[:session_id])
-    user.admin = false
-    user.save
-    # record in server session (memory). see sessions_helper.rb
-    sign_in(user)
-    redirect_to '/calendar'
-  elsif admin_password.value == params[:session][:password]
+  if admin_password.value == params[:session][:password]
     # session authenticated
     # record in database (file)
     user = User.new(:session => session[:session_id])
@@ -44,6 +35,15 @@ class SessionsController < ApplicationController
     # record in server session (memory). see sessions_helper.rb
     sign_in(user)
     redirect_to '/admin'
+  elsif website_password.value == params[:session][:password]
+    # session authenticated
+    # record in database (file)
+    user = User.new(:session => session[:session_id])
+    user.admin = false
+    user.save
+    # record in server session (memory). see sessions_helper.rb
+    sign_in(user)
+    redirect_to '/calendar'
   else
     flash.now[:error] = "Mot de passe invalide."
     render 'auth'

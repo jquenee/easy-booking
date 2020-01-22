@@ -17,7 +17,12 @@ class ApplicationController < ActionController::Base
  end
 
  def authenticate_admin
-    deny_access unless signed_in? and admin?
+    deny_access_admin unless signed_in? and admin?
+ end
+
+ def deny_access_admin
+   flash[:failure] = "You do not have access to that page."
+   redirect_to '/login'
  end
 
  # we redirect user directly to default page (use case: booking already removed by other user)
