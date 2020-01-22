@@ -63,7 +63,7 @@
         <tr>
             <%= form_for(contact) do |c| %>
               <td><%= contact.id %></td>
-              <td><%= c.text_field(:name, class: 'form-group', maxlength: '10') %></td>
+              <td><%= c.text_field(:name, class: 'form-group', maxlength: '25') %></td>
               <td><%= c.text_field(:phone, class: 'form-group', maxlength: '10') %></td>
               <td><%= c.text_field(:email, class: 'form-group', maxlength: '30') %></td>
               <td><%= button_to "update", {controller: :contact, action: :update, id: contact.id}, method: :patch, class: "btn btn-warning" %></td>

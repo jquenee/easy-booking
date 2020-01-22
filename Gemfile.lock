@@ -155,6 +155,9 @@ GEM
       tilt
     sdoc (1.0.0)
       rdoc (>= 5.0)
+    seed_dump (3.3.1)
+      activerecord (>= 4)
+      activesupport (>= 4)
     spring (2.1.0)
     sprockets (4.0.0)
       concurrent-ruby (~> 1.0)
@@ -200,6 +203,7 @@ DEPENDENCIES
   rails (= 6.0.2.1)
   sass-rails
   sdoc
+  seed_dump
   spring
   sqlite3
   turbolinks

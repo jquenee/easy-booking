@@ -25,6 +25,9 @@ gem 'sdoc', group: :doc
 # For file uploading
 gem 'carrierwave', '~> 2.0'
 
+# For migration process
+gem 'seed_dump'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
