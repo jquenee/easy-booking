@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :sessions, :only => [:create,]
   delete 'sessions/', to: 'sessions#destroyall'
   root 'sessions#new'
+  get 'login' => 'sessions#relogin'
 
   get 'calendar' => 'calendar#show'
   resources :calendar, :only => [:show]

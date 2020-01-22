@@ -1,5 +1,5 @@
 class PriceController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate_admin
   before_action :set_price, only: [:update, :destroy]
 
   # POST /price/create

@@ -1,5 +1,5 @@
 class ContactController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate_admin
   before_action :set_contact, only: [:update, :destroy]
 
   # POST /contact/create

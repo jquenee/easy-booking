@@ -17,6 +17,7 @@ class InitialData < ActiveRecord::Migration[5.2]
 
   def import_settings
     Settings.delete_all
+    Settings.create({"key" => "admin_password", "vtype" => "string", "value" => "secret"})
     Settings.create({"key" => "website_url", "vtype" => "string", "value" => Rails.configuration.x.website_url})
     Settings.create({"key" => "website_name", "vtype" => "string", "value" => Rails.configuration.x.name})
     Settings.create({"key" => "website_password", "vtype" => "string", "value" => Rails.configuration.x.password})

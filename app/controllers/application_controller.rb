@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include BookingsHelper
   include EmailsenderHelper
- 
+
  def render_404
   render :file => "public/404.html",  :status => 404
  end
@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
  private
  def authenticate
     deny_access unless signed_in?
- end 
+ end
+
+ def authenticate_admin
+    deny_access unless signed_in? and admin?
+ end
 
  # we redirect user directly to default page (use case: booking already removed by other user)
  def record_not_found

@@ -9,6 +9,10 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def admin?
+    current_user.admin
+  end
+
   def deny_access
     redirect_to root_path, :notice => "Merci de vous identifier pour rejoindre cette page."
   end

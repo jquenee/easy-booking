@@ -1,5 +1,5 @@
 class SettingController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate_admin
 
   # PATCH /setting/1
   def update
