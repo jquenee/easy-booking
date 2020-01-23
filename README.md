@@ -7,14 +7,16 @@ Contacts list is pre-fixed by setting. When a booking is recorded, an email is s
 # INSTALLATION GUIDE
 
 ## From scratch installation
-* Install ruby on rails: http://rubyonrails.org/
+* Install ruby on rails: http://rubyonrails.org/ and dep
+```
+sudo apt-get install ruby ruby-dev zlib1g-dev libsqlite3-dev g++
+```
 * Install nodejs
 ```
 sudo apt-get install nodejs
 ```
 * Install basic gem
 ```
-gem install rails -v 6.0.2.1
 gem install bundler
 ```
 * Download solution
