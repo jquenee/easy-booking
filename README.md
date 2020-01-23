@@ -93,5 +93,5 @@ sqlite3 db/production.sqlite3 < db/production.sql
 ```
 * Start the server
 ```
-rails s -d -b 192.168.0.66 -e production
+bundle exec rails s -d -b 192.168.0.66 -e production
 ```
