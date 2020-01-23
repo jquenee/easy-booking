@@ -37,7 +37,7 @@ iptables-save
 * Update "mode d'emploi": public/mode-emploi.pdf
 * Download gems dependencies
 ```
-bundle install
+bundle install --path vendor/bundle
 ```
 * Set secret key
 ```
@@ -54,7 +54,7 @@ rake db:setup RAILS_ENV=production
 ```
 * Run server (example)
 ```
-rails s -d -b 192.168.0.66 -e production
+bundle exec rails s -d -b 192.168.0.66 -e production
 ```
 
 ## Upgrade procedure
