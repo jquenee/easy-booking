@@ -29,7 +29,7 @@ sudo sysctl -w net.ipv4.ip_forward=1
 sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 sudo iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 3000
 sudo iptables -t nat -I OUTPUT -p tcp -d 192.168.0.66 --dport 80 -j REDIRECT --to-ports 3000
-iptables -L -v -n
+iptables -t nat -L -n
 iptables-save
 ```
 * Update website setting: config/initializers/agenda.rb
