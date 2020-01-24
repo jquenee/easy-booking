@@ -28,6 +28,9 @@ gem 'carrierwave', '~> 2.0'
 # For migration process
 gem 'seed_dump'
 
+# async call for email sending
+gem 'concurrent-ruby', require: 'concurrent'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

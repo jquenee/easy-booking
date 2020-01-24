@@ -16,7 +16,8 @@ class BookingsController < ApplicationController
    respond_to do |format|
       if @booking.save
         if params[:email] == "on"
-         email_all_booking_message(@booking)
+         sender = EmailSender.new
+         sender.async.email_all_booking_message(@booking)
         end
         format.html { redirect_to @booking, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @booking }

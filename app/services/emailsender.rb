@@ -1,5 +1,7 @@
-module EmailsenderHelper
+class EmailSender < ApplicationController
+ include Concurrent::Async
 
+ # asynchronous call for better front-end UX experience
  def email_all_booking_message(booking)
   emails = contacts_email
   contact = Contact.find(booking.contact_id)
@@ -15,26 +17,25 @@ module EmailsenderHelper
   message << "Pour visualiser le calendrier merci de vous connecter à http://" << Settings.find_by_key('website_url').value << "\n"
   message << "Mot de passe: " << Settings.find_by_key('website_password').value
 
-  # asynchronous call for better front-end UX experience
-  Thread.new {
-   smtp = Net::SMTP.new(Settings.find_by_key('smtp_ip').value, Settings.find_by_key('smtp_port').value.to_i)
-   # debug option
-   if Settings.find_by_key('smtp_debug').value.to_boolean
-     smtp.set_debug_output $stderr
-     logger.info("emails to:")
-     logger.info(emails.to_s)
-     logger.info("message to send:")
-     logger.info(message)
-   end
-   if Settings.find_by_key('smtp_ttls').value.to_boolean
-  	smtp.enable_starttls
-   else
-	smtp.disable_starttls
-   end
-   smtp.start(Settings.find_by_key('smtp_domain').value, Settings.find_by_key('smtp_login').value, Settings.find_by_key('smtp_password').value, Rails.configuration.x.email_authtype) do
+  smtp = Net::SMTP.new(Settings.find_by_key('smtp_ip').value, Settings.find_by_key('smtp_port').value.to_i)
+  # debug option
+  is_debug = Settings.find_by_key('smtp_debug').value.downcase == "true"
+  if is_debug
+    smtp.set_debug_output $stderr
+    logger.info("emails to:")
+    logger.info(emails.to_s)
+    logger.info("message to send:")
+    logger.info(message)
+  end
+  is_ttls = Settings.find_by_key('smtp_ttls').value.downcase == "true"
+  if is_ttls
+  	 smtp.enable_starttls
+  else
+	   smtp.disable_starttls
+  end
+  smtp.start(Settings.find_by_key('smtp_domain').value, Settings.find_by_key('smtp_login').value, Settings.find_by_key('smtp_password').value, Rails.configuration.x.email_authtype) do
    	 smtp.send_message(message, "noreply@" << Settings.find_by_key('smtp_domain').value, emails)
-   end
-  }
+  end
 end
 
  private
