@@ -107,7 +107,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.0)
     nio4r (2.5.2)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     public_suffix (4.0.3)
     rack (2.1.1)
@@ -198,6 +198,7 @@ DEPENDENCIES
   byebug
   carrierwave (~> 2.0)
   coffee-rails
+  concurrent-ruby
   jbuilder
   jquery-rails
   rails (= 6.0.2.1)
