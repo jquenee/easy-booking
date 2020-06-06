@@ -188,7 +188,7 @@ GEM
       rack-test (>= 0.5.3)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
     zeitwerk (2.2.2)
 
 PLATFORMS
@@ -198,6 +198,7 @@ DEPENDENCIES
   byebug
   carrierwave (~> 2.0)
   coffee-rails
+  concurrent-ruby
   jbuilder
   jquery-rails
   rails (= 6.0.2.1)
