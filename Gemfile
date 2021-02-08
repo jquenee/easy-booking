@@ -23,7 +23,7 @@ gem 'jbuilder'
 gem 'sdoc', group: :doc
 
 # For file uploading
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 
 # For migration process
 gem 'seed_dump'
