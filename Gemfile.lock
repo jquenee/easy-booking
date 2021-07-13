@@ -56,7 +56,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     bindex (0.8.1)
     builder (3.2.4)
@@ -109,7 +109,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
-    public_suffix (4.0.3)
+    public_suffix (4.0.6)
     rack (2.1.1)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -198,6 +198,7 @@ DEPENDENCIES
   byebug
   carrierwave (~> 2.0)
   coffee-rails
+  concurrent-ruby
   jbuilder
   jquery-rails
   rails (= 6.0.2.1)
